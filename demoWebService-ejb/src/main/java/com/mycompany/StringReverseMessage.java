@@ -16,14 +16,14 @@ public class StringReverseMessage {
     @XmlElement(name = "request")
     private String string;
     @XmlElement(name = "response")
-    private String reverseString;
+    private Boolean notPolindrom;
 
     public StringReverseMessage() {
     }
-    
-    public StringReverseMessage(String str, String reverseStr) {
+
+    public StringReverseMessage(String str, Boolean polindrom) {
         this.string = str;
-        this.reverseString = reverseStr;
+        this.notPolindrom = polindrom;
     }
 
     public String getString() {
@@ -34,21 +34,20 @@ public class StringReverseMessage {
         this.string = string;
     }
 
-    public String getReverseString() {
-        return reverseString;
+    public Boolean getNotPolindrom() {
+        return notPolindrom;
     }
 
-    public void setReverseString(String reverseString) {
-        this.reverseString = reverseString;
+    public void setNotPolindrom(Boolean notPolindrom) {
+        this.notPolindrom = notPolindrom;
     }
 
     public String toStringXML() {
         String result = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
                 + "<message>\n"
                 + "    <request>" + string + "</request>\n"
-                + "    <response>" + reverseString + "</response>\n"
+                + "    <response>" + notPolindrom + "</response>\n"
                 + "</message>";
         return String.valueOf(result);
     }
-
 }

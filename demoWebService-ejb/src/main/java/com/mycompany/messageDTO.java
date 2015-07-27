@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany;
 
 import java.io.Serializable;
@@ -14,14 +9,14 @@ import java.io.Serializable;
 public class messageDTO implements Serializable {
 
     private String string;
-    private String reverseString;
+    private Boolean notPolindrom;
 
     public messageDTO() {
     }
 
-    public messageDTO(String string, String reverseString) {
+    public messageDTO(String string, Boolean notPolindrom) {
         this.string = string;
-        this.reverseString = reverseString;
+        this.notPolindrom = notPolindrom;
     }
 
     public String getString() {
@@ -32,12 +27,12 @@ public class messageDTO implements Serializable {
         this.string = string;
     }
 
-    public String getReverseString() {
-        return reverseString;
+    public Boolean getNotPolindrom() {
+        return notPolindrom;
     }
 
-    public void setReverseString(String reverseString) {
-        this.reverseString = reverseString;
+    public void setNotPolindrom(Boolean notPolindrom) {
+        this.notPolindrom = notPolindrom;
     }
 
     @Override
@@ -45,9 +40,9 @@ public class messageDTO implements Serializable {
         String result = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
                 + "<message>\n"
                 + "    <request>" + string + "</request>\n"
-                + "    <response>" + reverseString + "</response>\n"
+                + "    <response>" + notPolindrom + "</response>\n"
                 + "</message>";
         return String.valueOf(result);
     }
-
+    
 }

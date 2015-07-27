@@ -59,8 +59,8 @@ public class ServiceTest {
     public void createMessage() {
         // set up
         System.out.println("createMessage");
-        StringReverseMessage message = new StringReverseMessage("test", "tset");
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<message>\n    <request>test</request>\n    <response>tset</response>\n</message>";
+        StringReverseMessage message = new StringReverseMessage("test", true);
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<message>\n    <request>test</request>\n    <response>true</response>\n</message>";
 
         // execut & verify
         assertEquals(expected, message.toStringXML());
@@ -73,7 +73,7 @@ public class ServiceTest {
 
         // set up
         System.out.println("testShouldMarshallMessage");
-        StringReverseMessage message = new StringReverseMessage("test", "tset");
+        StringReverseMessage message = new StringReverseMessage("test", true);
         StringWriter writer = new StringWriter();
         JAXBContext context = JAXBContext.newInstance(StringReverseMessage.class);
         Marshaller m = context.createMarshaller();
@@ -85,6 +85,12 @@ public class ServiceTest {
 
         // verify
         assertEquals(message.toStringXML(), writer.toString().trim());
+        
+        // tear Down
+        message = null;
+        writer = null;
+        context = null;
+        m = null;
 
     }
 
@@ -92,7 +98,7 @@ public class ServiceTest {
     public void testShouldUnmarshallMessage() throws JAXBException {
         // setup
         System.out.println("testShouldUnmarshallMessage");
-        StringReader reader = new StringReader(new StringReverseMessage("test", "tset").toStringXML());
+        StringReader reader = new StringReader(new StringReverseMessage("test", true).toStringXML());
         JAXBContext context = JAXBContext.newInstance(StringReverseMessage.class);
         Unmarshaller u = context.createUnmarshaller();
         
@@ -101,7 +107,14 @@ public class ServiceTest {
 
         // verify
         assertEquals("test", message.getString());
-        assertEquals("tset", message.getReverseString());
+        assertEquals(true, message.getNotPolindrom());
+        
+        // tear Down
+        u = null;
+        reader = null;
+        context = null;
+        message = null;
+        
     }
 
 }

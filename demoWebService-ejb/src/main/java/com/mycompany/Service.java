@@ -2,6 +2,9 @@ package com.mycompany;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  *
@@ -12,8 +15,6 @@ public class Service {
 
     @EJB
     ProducerEJB message;
-    
-    
 
     public Service() {
     }
@@ -26,11 +27,14 @@ public class Service {
         for (i = (len - 1); i > -1; i--) {
             result.append(source.charAt(i));
         }
-        String dto = new messageDTO(source, result.toString()).toString();
-        sendMessage(dto);
         return new String(result);
     }
 
+    public boolean checkForPalindrom(String inputStr) {
+        return inputStr.equals(StringUtils.reverse(inputStr));
+    }
+
+    //@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)    
     public void sendMessage(String send) {
         message.sendMessage(send);
     }

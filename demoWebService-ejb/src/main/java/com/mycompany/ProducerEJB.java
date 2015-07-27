@@ -4,7 +4,7 @@ import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.ConnectionFactory;
 import javax.jms.JMSContext;
-import javax.jms.Topic;
+import javax.jms.Queue;
 
 /**
  *
@@ -13,12 +13,11 @@ import javax.jms.Topic;
 @Stateless
 public class ProducerEJB {
 
-    // @JMSPasswordCredential(userName="admin", password="S&RhZWL5V28P")
     @Resource(lookup = "jms/javaee7/ConnectionFactory")
     private ConnectionFactory connectionFactory;
 
-    @Resource(lookup = "jms/javaee7/Topic")
-    private Topic topic;
+    @Resource(lookup = "jms/javaee7/Queue")
+    private Queue queue;
 
     // ======================================
     // =           Public Methods           =
@@ -28,7 +27,7 @@ public class ProducerEJB {
 
     public void sendMessage(String m) {
         try (JMSContext context = connectionFactory.createContext()) {
-            context.createProducer().send(topic, m);
+            context.createProducer().send(queue, m);
         }
     }
 

@@ -1,2 +1,9 @@
+## IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+
 demoWebService-ear/target/*
 demoWebService-ejb/target/*

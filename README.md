@@ -1,12 +1,12 @@
 # demoWebService 
 
-Проект для Glassfish
+РџСЂРѕРµРєС‚ РґР»СЏ Glassfish
 IDE NetBeans
 
-WebService JAX-WS с использованием очереди.
+WebService JAX-WS СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РѕС‡РµСЂРµРґРё.
 
-Предварительно, перед тем как деплоить web service на Glassfish,
-надо создать очереди с использованием asadmin:
+РџСЂРµРґРІР°СЂРёС‚РµР»СЊРЅРѕ, РїРµСЂРµРґ С‚РµРј РєР°Рє РґРµРїР»РѕРёС‚СЊ web service РЅР° Glassfish,
+РЅР°РґРѕ СЃРѕР·РґР°С‚СЊ РѕС‡РµСЂРµРґРё СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј asadmin:
 
 asadmin create-jms-resource --restype javax.jms.ConnectionFactory jms/javaee7/ConnectionFactory
 
